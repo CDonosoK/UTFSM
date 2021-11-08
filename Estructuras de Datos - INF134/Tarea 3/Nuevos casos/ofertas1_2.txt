@@ -1,0 +1,3 @@
+cod:9645,cantidad:9645,descu:9645
+cod:777,cantidad:7,descu:1000
+cod:652,cantidad:9999,descu:666

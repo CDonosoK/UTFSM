@@ -1,0 +1,11 @@
+Insert 5
+Insert 12
+Insert 4
+Rank 7
+Insert 6
+Rank 7
+Insert 3
+Rank 7
+Insert 8
+Rank 7
+Rank 12

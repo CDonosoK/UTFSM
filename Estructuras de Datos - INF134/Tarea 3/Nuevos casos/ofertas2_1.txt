@@ -1,0 +1,3 @@
+cod:222222,cantidad:2,descu:500
+cod:222222,cantidad:3,descu:222222
+cod:222222,cantidad:222222,descu:1

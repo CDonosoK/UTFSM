@@ -1,0 +1,81 @@
+20                      ---> cantidad de productos
+
+111111           1      ---> 6 digitos cod. prod.
+Clorox                  ---> nombre del prod.
+3000                    ---> precio
+
+666592          2       ---> numero del producto en lista
+pasta dental
+600
+
+577125          3
+awa
+1
+
+865475          4
+libro x
+6000
+
+983575          5
+lampara
+8990
+
+654684          6
+uwu
+99999999
+
+684324          7
+ewe
+200000
+
+968321          8
+aqui no hay nada que ver
+666
+
+961038          9
+polystation
+1000
+
+657203          10
+iwi
+303
+
+776600          11
+calculadora
+3656
+
+546314          12
+lapiz
+700
+
+707070          13
+ololol de caveza
+707070
+
+547305          14
+esta bueno este cover de undertale
+15990
+
+892448          15
+holaaaa
+321654987
+
+225250          16
+su ojo salton
+9854265765
+
+324625          17
+sweet escape
+36590
+
+968426          18
+aguante trabajar a las 3 am
+10
+
+061247          19
+esta cancion se puso demasiado electro
+7003
+
+577125          20                  ----> caso de prueba, revisar siguiente linea
+me pregunto que pasara si uso el mismo cod. de awa...
+3654

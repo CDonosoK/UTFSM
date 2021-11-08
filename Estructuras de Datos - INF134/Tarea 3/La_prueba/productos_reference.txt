@@ -1,0 +1,301 @@
+Cantidad de structs: 60
+
+[Struct 1]
+  cod_producto: 1
+  nbre_producto: Manzana
+  precio: 1
+
+[Struct 2]
+  cod_producto: 2
+  nbre_producto: Guantes
+  precio: 2
+
+[Struct 3]
+  cod_producto: 3
+  nbre_producto: Steak
+  precio: 3
+
+[Struct 4]
+  cod_producto: 4
+  nbre_producto: Donut
+  precio: 4
+
+[Struct 5]
+  cod_producto: 5
+  nbre_producto: Carbon
+  precio: 5
+
+[Struct 6]
+  cod_producto: 6
+  nbre_producto: Nuggets
+  precio: 6
+
+[Struct 7]
+  cod_producto: 7
+  nbre_producto: Zanahoria
+  precio: 7
+
+[Struct 8]
+  cod_producto: 8
+  nbre_producto: Lomito
+  precio: 8
+
+[Struct 9]
+  cod_producto: 9
+  nbre_producto: Tomate
+  precio: 9
+
+[Struct 10]
+  cod_producto: 10
+  nbre_producto: Pepino
+  precio: 10
+
+[Struct 11]
+  cod_producto: 11
+  nbre_producto: Grua
+  precio: 11
+
+[Struct 12]
+  cod_producto: 12
+  nbre_producto: Agua
+  precio: 12
+
+[Struct 13]
+  cod_producto: 13
+  nbre_producto: Papas Fritas
+  precio: 13
+
+[Struct 14]
+  cod_producto: 14
+  nbre_producto: Salchichas
+  precio: 14
+
+[Struct 15]
+  cod_producto: 15
+  nbre_producto: Pepsi
+  precio: 15
+
+[Struct 16]
+  cod_producto: 16
+  nbre_producto: Coca Cola
+  precio: 16
+
+[Struct 17]
+  cod_producto: 17
+  nbre_producto: Pera
+  precio: 17
+
+[Struct 18]
+  cod_producto: 18
+  nbre_producto: Jabon
+  precio: 18
+
+[Struct 19]
+  cod_producto: 19
+  nbre_producto: Bebida
+  precio: 19
+
+[Struct 20]
+  cod_producto: 20
+  nbre_producto: Tula
+  precio: 20
+
+[Struct 21]
+  cod_producto: 21
+  nbre_producto: Frac
+  precio: 21
+
+[Struct 22]
+  cod_producto: 22
+  nbre_producto: Anticucho
+  precio: 22
+
+[Struct 23]
+  cod_producto: 23
+  nbre_producto: Clorox
+  precio: 23
+
+[Struct 24]
+  cod_producto: 24
+  nbre_producto: Pan integral
+  precio: 24
+
+[Struct 25]
+  cod_producto: 25
+  nbre_producto: Pan
+  precio: 25
+
+[Struct 26]
+  cod_producto: 26
+  nbre_producto: Atun
+  precio: 26
+
+[Struct 27]
+  cod_producto: 27
+  nbre_producto: Carne
+  precio: 27
+
+[Struct 28]
+  cod_producto: 28
+  nbre_producto: Huevo
+  precio: 28
+
+[Struct 29]
+  cod_producto: 29
+  nbre_producto: Sardinas
+  precio: 29
+
+[Struct 30]
+  cod_producto: 30
+  nbre_producto: Leche
+  precio: 30
+
+[Struct 31]
+  cod_producto: 31
+  nbre_producto: Bacalao
+  precio: 31
+
+[Struct 32]
+  cod_producto: 32
+  nbre_producto: Ostras
+  precio: 32
+
+[Struct 33]
+  cod_producto: 33
+  nbre_producto: Chocolate
+  precio: 33
+
+[Struct 34]
+  cod_producto: 34
+  nbre_producto: Trencito
+  precio: 34
+
+[Struct 35]
+  cod_producto: 35
+  nbre_producto: Monster
+  precio: 35
+
+[Struct 36]
+  cod_producto: 36
+  nbre_producto: Score
+  precio: 36
+
+[Struct 37]
+  cod_producto: 37
+  nbre_producto: Te
+  precio: 37
+
+[Struct 38]
+  cod_producto: 38
+  nbre_producto: Vino
+  precio: 38
+
+[Struct 39]
+  cod_producto: 39
+  nbre_producto: Cerveza
+  precio: 39
+
+[Struct 40]
+  cod_producto: 40
+  nbre_producto: Carne
+  precio: 40
+
+[Struct 41]
+  cod_producto: 41
+  nbre_producto: a
+  precio: 41
+
+[Struct 42]
+  cod_producto: 42
+  nbre_producto: b
+  precio: 42
+
+[Struct 43]
+  cod_producto: 43
+  nbre_producto: c
+  precio: 43
+
+[Struct 44]
+  cod_producto: 44
+  nbre_producto: d
+  precio: 44
+
+[Struct 45]
+  cod_producto: 45
+  nbre_producto: e
+  precio: 45
+
+[Struct 46]
+  cod_producto: 46
+  nbre_producto: f
+  precio: 46
+
+[Struct 47]
+  cod_producto: 47
+  nbre_producto: g
+  precio: 47
+
+[Struct 48]
+  cod_producto: 48
+  nbre_producto: h
+  precio: 48
+
+[Struct 49]
+  cod_producto: 49
+  nbre_producto: i
+  precio: 49
+
+[Struct 50]
+  cod_producto: 50
+  nbre_producto: j
+  precio: 50
+
+[Struct 51]
+  cod_producto: 51
+  nbre_producto: k
+  precio: 51
+
+[Struct 52]
+  cod_producto: 52
+  nbre_producto: l
+  precio: 52
+
+[Struct 53]
+  cod_producto: 53
+  nbre_producto: m
+  precio: 53
+
+[Struct 54]
+  cod_producto: 54
+  nbre_producto: n
+  precio: 54
+
+[Struct 55]
+  cod_producto: 55
+  nbre_producto: o
+  precio: 55
+
+[Struct 56]
+  cod_producto: 56
+  nbre_producto: p
+  precio: 56
+
+[Struct 57]
+  cod_producto: 57
+  nbre_producto: q
+  precio: 57
+
+[Struct 58]
+  cod_producto: 58
+  nbre_producto: r
+  precio: 58
+
+[Struct 59]
+  cod_producto: 59
+  nbre_producto: s
+  precio: 59
+
+[Struct 60]
+  cod_producto: 60
+  nbre_producto: t
+  precio: 60

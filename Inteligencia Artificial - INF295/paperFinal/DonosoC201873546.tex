@@ -1,0 +1,418 @@
+\title{Inteligencia Artificial \\ \begin{Large}Informe Final: Examination Timetabling Problem\end{Large}}
+\author{Clemente Donoso Krauss}
+\date{\today}
+\maketitle
+
+
+%--------------------No borrar esta secci\'on--------------------------------%
+\section*{Evaluaci\'on}
+
+\begin{tabular}{ll}
+Mejoras 1ra Entrega (10\%): &  \underline{\hspace{2cm}}\\
+C\'odigo Fuente (10\%): &  \underline{\hspace{2cm}}\\
+Representaci\'on (15\%):  & \underline{\hspace{2cm}} \\
+Descripci\'on del algoritmo (20\%):  & \underline{\hspace{2cm}} \\
+Experimentos (10\%):  & \underline{\hspace{2cm}} \\
+Resultados (10\%):  & \underline{\hspace{2cm}} \\
+Conclusiones (20\%): &  \underline{\hspace{2cm}}\\
+Bibliograf\'ia (5\%): & \underline{\hspace{2cm}}\\
+ &  \\
+\textbf{Nota Final (100)}:   & \underline{\hspace{2cm}}
+\end{tabular}
+%---------------------------------------------------------------------------%
+\vspace{2cm}
+
+
+\begin{abstract}
+El Examination Timetabling Problem (ETP), es un problema que busca dar solución a la asignación de exámenes sobre un conjunto de horarios bajo ciertas restricciones que se planteen. Los alcances y variaciones de éste problema que van desde asignar exámenes en una universidad, hasta asignar las fechas de los partidos de fútbol u otros deportes, hacen del ETP un problema bastante estudiado en la historia y sumamente importante trabajarlo. El documento presenta el problema desde sus orígenes, la necesidad de estudiarlo, un recorrido sobre alguna de las soluciones propuestas en el último tiempo. También se presenta un modelo matemático que busca solucionar el ETP de manera novedosa con las conclusiones pertinentes. Finalmente se invita al lector a involucrarse en el estudio y presentar sus propias conclusiones sobre el ETP y la solución presentada.
+\end{abstract}
+
+\section{Introducci\'on}
+En la actualidad, gran parte de las universidades y centros de estudios han optado por evaluar el conocimiento de los estudiantes a partir de evaluaciones y exámenes que engloban toda la materia vista en un semestre, es por ello, que cobra importancia para estos centros educativos que aseguren las condiciones para realizar una buena evaluación, ya que mientras mejores condiciones se brinden para su rendición, mejores resultados podrán esperarse \cite{Cita1}. Los factores que se pueden nombrar que influyen en estas condiciones son múltiples, entre ellos se pueden nombrar, que los horarios asignados a los estudiantes no se solapen (ya que un estudiante no puede rendir más de un examen al mismo tiempo), y a su vez, cada estudiante necesitará de un tiempo de descanso o preparación entre exámenes \cite{Cita2}. Toda institución educacional debe realizar esta asignación de horarios, por lo que dado la cantidad de exámenes y alumnos que dichas instituciones tienen, es una tarea que consume bastante tiempo y hacerlo de manera manual es contraproducente. Por lo que se debe contar con alguna técnica que automatice dicho proceso, sin embargo, dada las variaciones de curriculum, de estudiantes e incluso el atraso o adelantos de estos en la malla curricular, hacen de éste problema uno complejo y de gran relevancia para las universidades o entidades educativas, tanto para tenerlo encuenta, como también resolverlo. 
+\begin{itemize}
+\end{itemize}
+\\
+El problema descrito anteriormente se le conoce comúnmente como Examination Timetabling Problem, el cual es una variante del problema Timetabling Problem (TP), dicho problema, considera el organizar un conjunto de actividades en bloques de horario, por lo que el ETP se define, como dice su nombre, el problema que tiene como objetivo organizar o calenderizar un conjunto de exámenes de cursos universitarios, evitando a toda costa el traslape de aquellos exámenes de los cursos que tengan estudiantes en común, y de esta manera, lograr distribuir de la mejor forma posible los exámenes \cite{Cita3}. Los TP, como los ETP forman parte del conjunto de problemas NP-completos, esto quiere decir, que no son posibles de resolver en un tiempo polinomial \cite{Cita4}, por otra parte, dado la diversidad de instituciones, planes de estudios y estudiantes que existen, los requerimientos a la hora de asignar los exámenes a sus horarios serán múltiples, sin embargo, éste grupo de requerimientos se puede separar en 2 tipos de restricciones \cite{Cita5}, tendremos las restricciones duras, las cuales siempre deben ser satisfechas (ver Cuadro~\ref{tab:Restricciones duras}), y por otro lado, tendremos las restricciones blandas, las cuales deben satisfacerse en el mayor grado posible para que de esta manera se logre dar con una mejor solución (ver Cuadro~\ref{tab:Restricciones blandas}). 
+\begin{itemize}
+\end{itemize}
+\\
+En el presente documento, se trabajará con una variante del ETP, la cual tiene como restricción dura que no están permitidos los topes de horario, como también, existirá una penalización por estudiante la cual dependerá de la cantidad de bloques que separan a los exámenes de un mismo estudiante (ver Cuadro~\ref{tab:Penalizaciones}), también para simplificar los cálculos tanto las salas como su capacidad será infinitas. Por lo que el problema ETP presentado tiene los siguientes dos objetivos
+\begin{center}
+    \begin{enumerate}
+    \item Minimizar los bloques de horario o tener la cantidad mínima de timeslot para los exámenes (\textbf{objetivo principal})
+    \item Minimizar la penalización o mejorar la distribución de los exámenes (\textbf{objetivo secundario})
+\end{enumerate}
+\end{center}
+
+Se ha mostrado con el estudio del problema ETP, que el minimizar los timeslot, por su parte también minimiza, en gran parte de los casos, la penalización promedio por estudiante, por lo que el desarrollo del problema, busca dar solución al objetivo principal.
+
+\begin{table}[]
+    \begin{center}
+        \begin{tabular}{| r | l| }
+        \hline
+        \textbf{Sigla} & \textbf{Penalización} \\ \hline \hline
+        W_0 & 16  \\ \hline
+        W_1 & 8  \\ \hline
+        W_2 & 4  \\ \hline
+        W_3 & 2  \\ \hline
+        W_4 & 1  \\ \hline
+        W_5^+ & 0  \\ \hline
+        \end{tabular}
+        \caption{Penalización por estudiante \cite{Cita1}}
+        \label{tab:Penalizaciones}
+    \end{center}
+\end{table}
+
+\vspace{2mm}
+Dado que el ETP se trata de un problema NP-Completo, el impacto que éste tiene no solo en las instituciones educativas, sino en gran parte de las organizaciones deportivas, hacen de éste problema uno interesante de estudiar y sobretodo, fundamental de resolver universalmente.
+
+Finalmente, la estructuración del presente documento está bajo la siguiente forma:\\
+En primera instancia se define el problema ET y sus variantes, y a su vez, se precisa y detalla el problema ETP en la sección \ref{Definición}; luego se habla sobre la historia del problema, desde sus inicios y como se han planteado diversas soluciones en la sección \ref{Estado}; por otro lado, una vez presentada la historia, se determina un modelo matemático, con sus variables y restricciones que permita entregar una solución al problema ETP en la sección \ref{Modelo}; por último se presenta alguna de las conclusiones desarrolladas sobre el trabajo realizado, como también se deja una invitación al lector para reflexionar sobre el futuro del problema ETP en la sección \ref{Conclusiones}
+
+\begin{table}[]
+    \begin{center}
+        \begin{tabular}{| r | l| }
+        \hline
+        \textbf{#} & \textbf{Restricción} \\ \hline \hline
+        1.- & Los exámenes no deben compartir alumnos de manera simultánea.   \\ \hline
+        2.- & Las salas deben ser suficientes, tanto en cantidad como en capacidad  \\ \hline
+        \end{tabular}
+        \caption{Restricciones duras en ETP \cite{Cita5}}
+        \label{tab:Restricciones duras}
+    \end{center}
+\end{table}
+
+\begin{table}[]
+    \begin{center}
+        \begin{tabular}{| r | l| }
+        \hline
+        \textbf{#} & \textbf{Restricción} \\ \hline \hline
+        1.- & Los exámenes que tienen mismo horario, deben distribuirse de manera uniforme   \\ \hline
+        2.- & Existen grupos de exámenes que deben tomarse al mismo tiempo  \\ \hline
+        3.- & Existen exámenes que deben ser consecutivos  \\ \hline
+        4.- & Exámenes extensos deben tomarse al inicio del día  \\ \hline
+        5.- & Exámenes que se solapan deben rendirse en horarios consecutivos  \\ \hline
+        6.- & Exámenes iguales pueden rendirse en ubicaciones distintas  \\ \hline
+        7.- & Exámenes distintos solo si tienen misma duración, pueden rendirse en la misma ubicación  \\ \hline
+        \end{tabular}
+        \caption{Restricciones blandas en ETP \cite{Cita5}}
+        \label{tab:Restricciones blandas}
+    \end{center}
+\end{table}
+
+\section{Definici\'on del Problema} \label{Definición}
+\\
+Como se dijo anteriormente, el Examination Timetabling Problem es un tipo de Timetabling Problem el cual está centrado en la calenderización de exámenes. Los TP tienen 4 componentes principales: Un conjunto de bloques de tiempos, un conjunto de recursos, un conjunto de actividades y un conjunto de restricciones \cite{Cita5}, en el cual para un ETP, se tiene que el conjunto de recursos son los estudiantes, el conjunto de actividades son los exámenes y las restricciones son que un alumno no puede dar más de un examen al mismo tiempo,de esta manera generar y organizar un calendario de exámenes donde las restricciones se satisfagan. Modelando de esta manera el problema, se puede plantear el ETP como un problema de búsqueda, satisfaciendo siempre las restricciones del problema, sin embargo, esta optimización de restricciones y de la función objetivo, hacen del problema ETP un problema de optimización, más que un problema de búsqueda.
+\begin{itemize}
+\end{itemize}
+\\
+Existen variaciones del problema ETP como instituciones educacionales en el mundo, sin embargo, todas estas buscan satisfacer el mismo objetivo principal, el cual es minimizar los bloques de horario en los cuales se deberán rendir los exámenes, por lo que también se han planteado diversas alternativas para solucionar este problema, algunas de ellas son la realización de diversas versiones de exámen \cite{Cita1}, también se puede encontrar en la literatura, alternativas donde se considera que existen un conjunto de ubicaciones para rendir el exámen y los alumnos pueden agendar sus preferencias \cite{Cita6}, entre otros ejemplos. Estos casos muestran la diversidad de versiones que se pueden encontrar en la literatura y las aplicaciones en la actualidad que comprende éste problema.
+\begin{itemize}
+\end{itemize}
+\\
+También dentro de los estudios realizados, se puede encontrar una cantidad no menor de Timetabling Problem, sin embargo, dentro de estos, existen dos que están directamente relaciones con el ETP: Timetabling Course Problem (Se debe organizar un conjunto de cursos en salas y horarios) y el School Timetabling Problem (Se debe organizar un conjunto de profesores, horarios, estudiantes, entre otros a un conjunto de actividades) que no solo se asemejan al Examination Timetabling Problem, sino también, han aportado importantes avances y novedosos puntos de vista para enfrentar y dar solución al ETP.
+\begin{itemize}
+\end{itemize}
+\\
+El problema que se plantea en
+ el documento, es aquel ETP que cuenta con un conjunto de exámenes finitos, y una cantidad finita de alumnos que deben rendir dichos exámenes. Para facilitar el desarrollo del problema se supone que las salas y la capacidad de éstas son infinitas, para así, buscar minimizar la cantidad de timeslot necesarios para que todos los alumnos puedan rendir sus examenes correctamente (que ningún estudiante tenga dos exámenes al mismo tiempo) y, siguiendo la línea anterior, también se debe disminuir la penalización por estudiante, es decir, aumentar el tiempo entre exámenes por alumno, siempre teniendo en cuenta que el objetivo principal es el minimizar la cantidad de bloques requeridos para rendir todos los exámenes.
+
+\section{Estado del Arte}
+\label{Estado}
+A lo largo de la historia, las primeras apariciones del problema ETP se pueden encontrar en los años 60's donde el autor Broder \cite{Cita7} en el año 1964, por primera vez, presenta y modela el problema dada la necesidad de organizar los exámenes finales de una universidad, donde la solución propuesta era un modelo probabilístico, el cual minimiza los conflictos entre los exámenes, sin embargo, con el tiempo se demostró que si bien era óptima la solución encontrada, no era la mejor. Aquel año, también se propuso una matriz, en la cual se representa los conflictos entre los exámenes y las restricciones pertinentes, para que de esta manera en conjunto con un algortimo de coloreo de grafos ("largest degree first: fill from top") se genere una solución también óptima \cite{Cita8}
+\begin{itemize}
+\end{itemize}
+\\
+Dos años más tarde, en el año 1966 se propone un nuevo algoritmo de coloreo de grafos, el cual plantea organizar de mejor manera los exámenes, sin embargo, esta solución dejaba totalmente de lado el objetivo principal del ETP \cite{Cita9}. Es por ello, que en el año 1968, se plantea un nuevo algoritmo, que a partir de la matriz generada por el algoritmo de Cole \cite{Cita8}, realizaba una organización óptima para gran parte de los exámenes, luego aquellos exámenes que no se pudiesen agendar con el algoritmo, eran reagendados utilizando la técnica "look ahead" para determinar la mejor asignación, es decir, el algoritmo se encargaba de organizar la mayor parte de los exámenes, y aquellos con problemas, eran calenderizados manualmente siguiendo esta técnica. Debido a la complejidad que tenía éste algoritmo y al crecimiento exponencial que ocurría al agregar más exámenes, no se podía utilizar para toda la universidad, sino que, se debía utilizar para grupos de exámenes más pequeños \cite{Cita10}.
+\begin{itemize}
+\end{itemize}
+\\
+Años más tarde, en los años 80's se desarrolla el algoritmo HOREX, el cual utiliza tanto las técnicas de coloreo de grafo desarrollado anteriormente, como también, una nueva forma de enfrentar el problema utilizando variables de decisión enteras o binarias. Éste algoritmo, en comparación a los presentados en años anteriores, entregaba la mejor solución cuando era aplicado a grupos pequeño de exámenes \cite{Cita11}. Tiempo después, se desarrolla a partir del algoritmo presentado por Desroches (HOREX), un nuevo algoritmo que buscaba dar mayor solución a las restricciones blandas del problema, logrando su objetivo, sin embargo, al igual que HOREX, su buen desempeño solo se debía al utilizar pequeñas cantidades de exámenes. \cite{Cita12}.
+\begin{itemize}
+\end{itemize}
+\\
+Ya a mediados de los años 80's, en 1984, por primera vez se habló sobre la preferencia que tienen los estudiantes a la hora de elegir sus cursos (exámenes), y también de la penalización por tener exámenes en bloques seguidos o costos de proximidad, es por ello, que a las restricciones duras que se tenían anteriormente, se le sumarían estas dos. El algoritmo presentado para dar solución a esta nueva variante, fue propuesto por Laporte y lo llamaron HORHEC (una variante de HOREX), el cual dejó de lado las heurísticas de coloreo de grafo, y planteó una nueva forma de enfrentar el problema utilizando la técnica "polynomially bounded
+backtracking", de esta manera al aplicarlo, mejoraba las soluciones encontradas anterioemente \cite{Cita13}.
+\begin{itemize}
+\end{itemize}
+\\
+Si bien todos estos modelos y planteamientos del problema ETP entregaban una solución óptima y fueron mejorando con el paso del tiempo, estuvieron siempre centrados en dar solución a organizaciones en específico, es decir, a los exámenes de instituciones en específica, sin tomar en cuenta los avances en paralelo que estaba ocurriendo, por lo que era imposible extrapolar las soluciones encontradas e incluso, comparar los distintos algoritmos realizados a la fecha \cite{Cita14}. Por lo que el aporte de Carter en 1996 fue fundamental en la creación de un algoritmo único para resolver los ETP, ya que estudió y analizó los puntos de vista mencionados (obteniendo sus ventajas y desventajas entre sí), y que si bien no podían ser utilizados en términos generales, introdujeron el problema y de esta manera se generaron las bases para poder comparar futuros algoritmos y analizar las soluciones propuestas \cite{Cita15}. 
+\begin{itemize}
+\end{itemize}
+\\
+Dentro de las técnicas utilizadas para resolver los ETP, se pueden destacar las siguientes 6 estrategias:
+
+\subsection{Estrategias basadas en Grafos:}
+Diversos autores han utilizado la teoría de grafos y las técnicas de coloreo de grafos para presentar una resolución al problema ETP o versiones del TP como la calenderización de ligas deportivas (recordemos que la asignación de estudiante con exámenes, se puede modelar usando grafos bipartitos) \cite{Cita16}, las cuales utilizando también algoritmos de inteligencia artificial como machine learning, han permitido optimizar las soluciones encontradas por el algoritmo. Éste conjunto de estrategias para abordar el problema ETP han generado una de las mejores soluciones actuales a dicho problema al utilizar grandes volúmenes de exámenes.
+
+\subsection{Estrategias Multi-Criterio:}
+Un punto de vista novedoso y alternativo a la hora de enfrentar el problema ETP fue la implementación de las estrategias Multi-Criterio, las cuales optaban por dejar de lado la optimización de la función objetivo, mientras que se centraban en calcular la importancia de cada restricción. De esta manera el problema ETP se pudo enfrentar con mayor flexibilidad, sin embargo, solo en algunos casos fueron buenos o decentes los resultados entregados por esta estrategia \cite{Cita17}. 
+
+\subsection{Estrategias basados en Población:}
+Los principales algoritmos basados en población, fueron los algoritmos de colonia de hormigas, estos algoritmos parten como un planteamiento desde la teoría de grafos, el cual utilizando técnicas de probabilidad deberían permitir encontrar la mejor solución \cite{Cita21}, sin embargo, no se obtuvieron resultados significativos incialmente, es por ello, que se crearon diversas versiones como algorítmos genéticos \cite{Cita22} para mejorar la optimización de esta técnica, pero no se logró el objetivo. Independiente de los resultados obtenidos, al implementar los algorítmos basados en población se pudo no solo generar la mejor representación del problema ETP, sino también en avanzar en crear la mejor heurística para dar solución al problema.
+
+\subsection{Estrategias de Satisfacción de Restricciones:}
+Es considerada una de las clásicas estratégias a la hora de resolver el problema ETP debido a la flexibilidad que entregaba el enfrentar dicho problema con esta técnica, sin embargo, seguía existiendo el principal problema, es decir, el crecimiento exponencial que tenía el problema a la hora de aumentar el grupo de exámenes. Por lo que esta técnica fue desechada rápidamente para entregar una solución favorable por si sola, no obstante, ésto no fue impedimento para que se pudiesen utilizar en conjunto con otras técnicas y así mejorar su rendimiento \cite{Cita20}.
+
+\subsection{Estrategias de Búsqueda Local:}
+Las técnicas de búsqueda local, utilizan la función objetivo para verificar la calidad de las soluciones generadas, por lo que tienen facilidades a la hora de trabajar con las restricciones del problema. Dentro de las técnicas de búsqueda local más utilizadas se pueden encontrar:
+\begin{itemize}
+    \item \textbf{Búsqueda por fases}, la cual a medida que se obtiene una solución, agrega una restricción que no haya sido utilizada anteriormente.
+    \item \textbf{Tabu Search}, en donde la función objetivo se modifica de tal manera que se adapte al problema.
+    \item \textbf{Asignación de prioridades}, la cual a partir de las restricciones que tenía el problema se le asignaba una prioridad.
+\end{itemize}
+Si bien la implementación de estas técnicas no entregó mejores resultados, sentó las bases para las técnicas híbridas, en las cuales se puede destacar la técnica híbrida entre Simulated Annealing y Backtracking, la cual mejoró notablemente los resultados obtenidos \cite{Cita18}. Otros autores, utilizaron esta idea para implementar sus versiones de algoritmos híbridos, por lo que en el año 2003, Merlot junto a Boland, Hughes y Stuckey utilizaron dicha técnica en conjunto con las técnicas de Satisfacción de Restricciones, obteniendo los mejores resultados (hasta esa fecha) a la hora de enfrentar el problema ETP \cite{Cita19}.
+
+\subsection{Estrategias de Hiperheurísticas:}
+Las heurísticas de un problema son definidas como las bases o lineamientos en que se debe realizar una solución, sin embargo, dada la gran variedad de ETP que se pueden encontrar en la literatura, el planteamiento de heurísticas o meta-heurísticas se tornó dificil, por lo que fue necesario plantear hiperheurísticas para resolver el problema \cite{Cita23}. Es por ello, que en las últimas dos décadas se ha trabajado incesantemente en dar con una hiperheurística para el problema, donde el mayor avance se tuvo el año 2019, en que a partir del algortimo Great Deluge se obtuvieron resultados impecables con respecto a las demás técnicas utilizadas, dando como consecuencia que las hiperheurísticas se establecieran como una de las mejores técnicas para enfrentar al ETP \cite{Cita1}.
+
+\section{Modelo Matem\'atico}
+\label{Modelo}
+Para poder presentar una solución al problema EPT con las especificaciones nombradas, se requiere realizar un modelo matemático tal que en primera instancia busque minimizar la cantidad de bloques necesarios para agendar la totalidad de exámenes, y que a su vez considere la penalización por estudiantes (el costo asociado por proximidad entre los exámenes). Para ello se utilizarán diversas herramientas como matriz de conflicto entre los exámenes y vectores correspondientes a los timeslot a utilizar.
+
+\subsection{Función Objetivo:}
+\begin{equation}
+    \label{función objetivo}
+    \text{min } F: \sum_{m=1}^M t_m + \sum_{p=0}^5 \sum_{m=1}^M \sum_{i=1}^N \sum_{j=1}^N (X_{im}X_{i(j+p)}+X_{im}X_{i(j-p)})C_{ij}W_{p}
+\end{equation}
+\begin{center}
+    Ecuación \ref{función objetivo}: Consta de dos partes, la primera sumatoria toma en cuenta la totalidad de timeslot utilizados (objetivo principal) , y la segunda parte toma en cuenta la penalización de los estudiantes según lo establecido (objetivo secundario).
+\end{center}
+
+\subsection{Variables:}
+\begin{center}
+\begin{itemize}
+	\item $x_{im} =
+					\left\{
+						\begin{array}{ll}
+							1  & \mbox{si el examen } i \text{ se rinde en el horario } m \\
+							0 & \mbox{caso contrario}
+						\end{array}
+					\right.$
+	\item $t_{m} =
+					\left\{
+						\begin{array}{ll}
+							1  & \mbox{si el horario } m \text{ es utilizado en la solución}\\
+							0 & \mbox{caso contrario}
+						\end{array}
+					\right.$
+
+\end{itemize}
+
+\end{center}
+\subsection{Constantes:}
+
+\begin{itemize}
+    \item $N$: Número de exámenes
+    \item  $C_{ij}$: Número de conflictos entre el examen i y j
+    \item $E_{i}$: Número de estudiantes que darán el exámen i
+    \item $W_{p}$: Penalización por estudiantes
+    \item $M$: Cantidad máxima de horarios
+\end{itemize}
+
+\subsection{Restricciones:}
+\begin{equation}
+    \label{restricción 1}
+    \sum_{i=1}^N \sum_{m=1}^M x_{im}h_{m} \leq N
+\end{equation}
+\begin{center}
+    Ecuación \ref{restricción 1}: Restricción que considera que la cantidad de exámenes rendidos no puede superar la totalidad de exámenes.
+\end{center}
+\vspace{5mm}
+\begin{equation}
+    \label{restricción 2}
+    \sum_{m=1}^M x_{im}t_{m} = 1 \quad \forall i \in \{1, \ldots, N\}
+\end{equation}
+\begin{center}
+    Ecuación \ref{restricción 2}: Restricción donde el exámen solo puede estar asignado a uno y solo un horario.
+\end{center}
+\vspace{5mm}
+\begin{equation}
+    \label{restricción 3}
+    x_{im} + x_{jm} \leq 1 \quad \forall i,j \setminus i<j \wedge i,j \in \{1, \ldots, E\} \wedge m \in \{1, \ldots, M\}
+\end{equation}
+\begin{center}
+    Ecuación \ref{restricción 3}: Restricción la cual hace alusión a que dos exámenes no pueden compartir el mismo timeslot, es decir, no puede existir conflicto entre ambos exámenes.
+\end{center}
+
+\subsection{Consideraciones:}
+Es importante realizar las siguientes consideraciones al momento de plantear el modelo:
+\begin{center}
+    \begin{itemize}
+        \item 1 \leq $i$ \leq $N$ 
+    \end{itemize}
+\end{center}
+\begin{center}
+    \begin{itemize}
+        \item 1 \leq $m$ \leq $M$
+    \end{itemize}
+\end{center}
+\begin{center}
+    \begin{itemize}
+        \item N \geq 1
+    \end{itemize}
+\end{center}
+\begin{center}
+    \begin{itemize}
+       \item L \geq 1
+    \end{itemize}
+\end{center}
+\begin{center}
+    \begin{itemize}
+       \item W_{0} = 16, W_{1} = 8, W_{2} = 4, W_{3} = 2, W_{4} = 1, W_{5^+} = 0 
+    \end{itemize}
+\end{center}
+
+\section{Representaci\'on}
+La técnica asignada para resolver el problema fue utilizar un algoritmo Greedy para obtener una solución inicial, y luego utilizar un algoritmo HillClimbing con mejor mejora para mejorar la solución encontrada anteriormente. Para resolver esto, se utilizaron diversas técnicas matemáticas como las siguientes:
+\begin{itemize}
+    \item \textbf{Matriz de Conflictos: } Tanto para encontrar la solución incial, como para mejorar dicha solución, se utilizó una representación del problema en una matriz de conflictos, donde las columnas y filas son los exámenes. En caso de que un alumno debiese rendir dos o más exámenes, eso implica que dichos exámenes están en conflicto y no pueden ser agendados en el mismo horario, por lo que, en la matriz de conflictos, dicha intersección se marcó con un 1, en caso de no existir conflictos se marcó con un 0.
+    \item \textbf{Vectores Auxiliares: } A lo largo del problema se puede observa que se utilizaron diversos vectores para facilitar los cálculos, por ejemplo, vectores que almacenan el cruce de los estudiantes con sus exámenes, vectores que almacenan los exámenes agenados, entre otras utilidades.
+\end{itemize}
+\textbf{La solución: } El formato de la solución, más allá de que el algoritmo genera archivos los archivos correspondientes, está dado por un vector bidimensional, cuyas filas corresponden a los timeslot, y las columnas los exámenes agendados en dicho timeslot.
+
+
+\section{Descripci\'on del algoritmo}
+Para resolver el problema del Examination Timetabling Problem, se utilizaron además de las funciones que se detallan a continuación, una serie de funciones auxiliares para facilitar el trabajo con los vectores y matrices correspondientes. \\
+Los pasos en como el problema es resuelto son los siguientes:
+\begin{itemize}
+    \item Se inicializa generando una matriz de conflictos entre los exámenes, a partir de que si un alumno debe realizar X exámenes, entonces dichos exámenes no pueden estar ninguno compartiendo el timeslot.
+    \item La solución inicial se utiliza usando un algoritmo Greedy, el cual a partir de la matriz de conflictos, va instanciando los examenes a medida que vla recorre, teniendo en cuenta que no puede instanciar en un mismo timeslot examenes que tengan conflicto.
+    \item El algoritmo HillCliming, utiliza tanto la información de la matriz de conflictos, como la del algortimo Greedy, como también la información de funciones auxiliares para estimar cual es el mejor examen que debe ser asignado nuevamente. En base a una serie de resultados se observó que mientras antes se instancien los exámenes más conflictivos, mejor será el resultado final.
+    \item Para calcular la penalización promedio por estudiante, solo se tomaron en cuenta aquellos alumnos que debían rendir 2 o más exámenes, y utilizando la tabla \ref{tab:Penalizaciones} para encontrar la penalización correspondiente por estudiante. Luego la suma de dichas penalizaciones se divide por la cantidad de estudiantes para obtener la penalización promedio total.
+\end{itemize}
+Recordemos que HillClimbing propiamente tal no tiene un componente de diversificación, por lo que la representación y como se elijan que movimientos hacer será primordial para obtener la solución con mejor calidad posible, como también la solución inicial, es por ello, que durante la ejecución del algoritmo se puso un fuerte énfasis en como iniciar el recorrido del vecindario.
+
+\begin{algorithm}[H]  
+  \caption{Algoritmo Generar Matriz de Conflictos}  
+  \label{alg:Framwork}  
+  Básicamente el algoritmo que genera la matriz de conflicto, recorre a cada estudiante, y por cada estudiante genera un vector con sus exámenes. Luego recorre dicho vector dos veces, para generar poblar la matriz de conflictos con 1 o 0 según corresponda.
+  \begin{algorithmic}  
+    \Require  
+    nombre del archivo de texto, cantidad examenes
+    
+    \Ensure  
+   Matriz de conflictos \\
+   E $\leftarrow $\;cantidad de examenes\\
+   matrizConflictos{[ExE]} $\leftarrow$\;Vacía
+    \While{ no se ha terminado el archivo}
+        \For{linea del archivo}
+        \State vectorExamenes $\leftarrow $\;Vacío
+            \If{ Alumno no ha cambiado}
+                \State agregar examenes a vectorExamenes
+            \EndIf
+            \If{ Alumno cambio}
+                \For{examen in vectorExamenes}
+                    \State poblar matriz con 1 en las intersecciones
+                    \State poblar matriz con 0 donde no hay intersecciones
+                \EndFor
+            \EndIf
+        \EndFor  
+    \EndWhile
+  \end{algorithmic}  
+\end{algorithm}
+
+\begin{algorithm}[H]  
+  \caption{Algoritmo Greedy}  
+  El algortimo Greedy corresponde a tomar la información de la matriz de conflictos, e ir poblando el vector de timeslot según corresponda, esto quiere decir, que solo puede agendar en un mismo timeslot aquellos exámenes cuya intersección en la matriz de conflictos tengan un 0.
+  \label{alg:Framwork}  
+  \begin{algorithmic}  
+    \Require  
+    matrizConflictos, cantidadExamenes
+    \Ensure  
+   cantidad de timslot\\
+   E $\leftarrow $\;cantidad de examenes\\
+   vectorSolución_{[E'xE]} $\leftarrow $\;vació
+   \For{examen in matrizConflictos}
+   \State tSlot $\leftarrow $\;0
+        \For{conflicto in matrizConflictos[examen]}
+            \State verificar que el examen no haya sido agregado
+            \If{examen presenta conflicto}
+                \State tSlot $\leftarrow $\;++
+            \EndIf
+            \State Agregar examen al vector solución según corresponda
+        \EndFor
+    \EndFor
+   
+  \end{algorithmic}  
+\end{algorithm}
+
+\begin{algorithm}[H]  
+  \caption{Algoritmo HillClimbing - Mejor Mejora} 
+  El algoritmo que se presenta, tiene como objetivo mejorar la solución encontrada por el algoritmo Greedy. Para ello utilizando una función auxiliar la cual retorta un vector con el examen y la cantidad de conflictos, los cuales están ordenados de menor a mayor cantidad de conflictos. Con la combinación de la matriz de conflictos, el vector generado por el algoritmo greedy y el vector generado por la función auxiliar, se plantea ir tomando los examenes más conflictivos y agregándolos a nuevos timeslot de tal manera de disminuir los timeslot finales.
+  \label{alg:Framwork}  
+  \begin{algorithmic}  
+    \Require  
+    lista conflictos, matriz de conflictos, cantidad de examenes, nombre del archivo a generar y nombre del archivo de estudiantes, 
+    \Ensure  
+   Cantidad de timeslot utilizados.\\
+   solucionMejor $\leftarrow $\ True\\
+   timeSlotMax $\leftarrow $\ 0\\
+   vectorSolucion $\leftarrow $\ vacío\\
+   ultimoValor $\leftarrow $\ vacío\\
+   
+   \While{no se vacía la lista conflictos}
+       \State ultimoValor $\leftarrow $\ ultimo valor lista conflictos
+       \For{i = cantidad de examenes}
+            \State agregarEx $\leftarrow $\ True
+            \For{j = cantidad de examenes}
+                \If{Presenta conflicto esos examenes}
+                    \State agregarEx $\leftarrow $\ False
+                    \State break
+                \EndIf
+            \EndFor
+            \If{agregarExamen}
+                \State se agrega el examen más conflictivo en el timeslot correspondiente.
+            \EndIf
+        \EndFor
+        \State comparar la cantidad de timeslot utilizados
+    \EndWhile
+            
+    
+   
+  \end{algorithmic}  
+\end{algorithm}
+
+\section{Experimentos}
+Durante la construcción y ejecución del código para resolver el problema se encontraron bastantes dificultades. En primera instancias, los problemas entregados al tener una gran cantidad de estudiantes / exámenes, hacía imposible ir testeando el código, por lo que se decidió crear instancias propias con una menor cantidad de variables (como máximo 10) y de esta manera darle solución al problema. Algo sumamente interesante que ocurrió, es que por el hecho de trabajar con una matriz de conflictos cuadrada, cuya dimensión depende únicamente de la cantidad de exámenes que se requieren organizar, solo se permite dar solución a los problemas que tengan como máximo 720 exámenes, ya que una matriz de 721 o más filas/columnas genera un error de memoria. Por otra parte, se observa tal y como estudios lo contemplaron, que el hecho de minimizar los timeslot, conlleva una minimización en la penalización promedio de los estudiantes. Otro dato interesante, es que aquellos problemas que tienen menos estudiantes, estadísticamente, conllevan una mayor penalización.\\
+Los problemas que se utilizaron para experimentar, además de los construidos personalmente, fueron los siguientes: \\
+\textbf{Carleton91, Carleton92, EarlHaig83, EdHEC92, LSE91, St.Andrews83. TorontoAS92, TorontoE92, Trent92 y YorkMills83} \\
+Durante la ejecución del código y la experimentación, se observó que al momento de mejorar la solución, primer modificar aquellos exámenes que tienen mayor cantidad de conflictos, conlleva a una mejor solución (en términos de timeslot), por lo que el algoritmo HillClimbing utiliza dicha información para testear la solución con ellos inicialmente. \\
+Otro punto clave es que los movimientos utilizados para generar una nueva solución, corresponden a buscar en el vecindario de la solución inicial (y las soluciones que se van generando), sin embargo, el vecindario de las soluciones se obtienen de tal manera de mover un examen a cualquier timeslot, tal que disminuya la cantidad de timeslot totales (esto ya que se produce un efecto cascada al momento de cambiar un examen de lugar).
+
+\section{Resultados}
+A partir de los experimentos realizados, se encontró que utilizar el algoritmo HillClimbing mejora bastante la solución encontrada por el algoritmo Greedy, los resultados por cada experimento se observan en la siguiente tabla:
+\begin{table}[H]
+\begin{tabular}{|l|c|c|c|}
+\hline
+Nombre del archivo    & \multicolumn{1}{l|}{Total timeslot Greedy} & \multicolumn{1}{l|}{Total timeslot HC} & \multicolumn{1}{l|}{Penalización promedio} \\ \hline \hline
+\textbf{Carleton91}   & 168                                        & 33                                     & 2                                          \\ \hline
+\textbf{Carleton92}   & 177                                        & 32                                     & 1                                          \\ \hline
+\textbf{EarlHaig83}   & 67                                         & 25                                     & 6                                          \\ \hline
+\textbf{EdHEC92}      & 24                                         & 19                                     & 3                                          \\ \hline
+\textbf{LSE91}        & 126                                        & 18                                     & 4                                          \\ \hline
+\textbf{St.Andrews83} & 57                                         & 12                                     & 11                                         \\ \hline
+\textbf{TorontoAS92}  & 215                                        & 35                                     & 1                                          \\ \hline
+\textbf{TorontoE92}   & 30                                         & 10                                     & 7                                          \\ \hline
+\textbf{Trent92}      & 47                                         & 21                                     & 2                                          \\ \hline
+\textbf{YorkMills83}  & 62                                         & 22                                     & 5                                          \\ \hline
+\end{tabular}
+\end{table}
+
+
+\section{Conclusiones}
+\label{Conclusiones}
+Debido a la importancia que tiene el problema TP y los alcances tanto en las instituciones educacionales, como también en las ligas deportivas y centros de salud, es un problema que ha sido bastante estudiado en la literatura y en todas sus versiones. Específicamente el ETP desde que fue propuesto por primera vez, se han planteado un centenar de soluciones, sin embargo, gran parte de las soluciones planteadas son propuestas para instituciones en específico o en grupos pequeños de exámenes, por lo que no son aplicables universalmente. Por otra parte, la representación del problema es fundamental a la hora resolverlo, esto ya que, el espacio de búsqueda está relacionado directamente con la representación a utilizar. Por otra parte, HillClimning al tratarse de un algoritmo reparador, su espacio de búsqueda son las soluciones candidatas, por lo que la solución encontrada si bien será rápida, no se asegura que sea de buena calidad.\\
+Cabe destacar, que el aporte que han hecho dichas alternativas, ha aportado nuevos puntos de vista y avances a la hora de tratar con el ETP, de esta manera, las mejores soluciones se pueden llegar a ajustar realizando algunas modificaciones a los algoritmos presentados. Si bien actualmente no se tiene una solución estándar, se invita al lector a profundizar en las técnicas de hiperheurísticas en conjunto con otras estrategias, debido al alto grado de eficacia que presentan, y a utilizar las nuevas tecnologías que se van creando, por ejemplo, la computación en paralelo para optimizar la entrega de la solución \cite{Cita25}.
+
+
+\section{Bibliograf\'ia}
+\label{Bibliografía}
+
+\bibliographystyle{plain}
+\bibliography{Referencias}
+
+\end{document} 
+
+
+\end{document} 

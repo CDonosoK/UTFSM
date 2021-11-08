@@ -1,0 +1,9 @@
+
+Anastasiia Fedorova 201873505-1 P.200
+Pregunta 2.Implementacion base de la lista enlazada para pregunta 1,funciones splitAndAdjust,newFree,optiPos,firstFit,dist,merge.
+
+Clemente Donoso 201873546-9 200 P.200
+
+
+Daniel Pumarino 201873608-2 P.201
+

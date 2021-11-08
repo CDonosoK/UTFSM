@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package chat;
+option go_package = "./;chat";
+
+message mensajeBienvenida{
+    string body = 1;
+    int32 id = 2;
+}
+
+message mensajeEntreEtapas{
+    string body = 1;
+    int32 id = 2;
+}
+
+message mensajeEtapa1{
+    int32 body = 1;
+    int32 id = 2;
+    int32 finJuego = 3;
+}
+
+message mensajeEtapa2{
+    int32 body = 1;
+    int32 id = 2;
+    int32 group = 3;
+    int32 valor = 4;
+    int32 finJuego = 5;
+}
+
+message mensajeGanador{
+    int32 id = 1;
+}
+
+message mensajeEtapa3{
+    int32 body = 1;
+    int32 id = 2;
+    int32 group = 3;
+    int32 valor = 4;
+}
+
+
+service ChatService{
+    rpc Bienvenida(mensajeBienvenida) returns (mensajeBienvenida) {}
+    rpc EntreEtapas(mensajeEntreEtapas) returns (mensajeEntreEtapas) {}
+    rpc EntreEtapas0(mensajeEntreEtapas) returns (mensajeEntreEtapas) {}
+    rpc Etapa1(mensajeEtapa1) returns (mensajeEtapa1) {}
+    rpc InicioEtapa2(mensajeEtapa2) returns (mensajeEtapa2) {}
+    rpc Etapa2(mensajeEtapa2) returns (mensajeEtapa2) {}
+    rpc MostrarGanador(mensajeGanador) returns (mensajeGanador) {}
+    rpc Etapa3(mensajeEtapa3) returns (mensajeEtapa3) {}
+} 

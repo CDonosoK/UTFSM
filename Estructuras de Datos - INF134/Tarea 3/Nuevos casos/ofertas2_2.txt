@@ -1,0 +1,3 @@
+cod:777777,cantidad:777,descu:7777
+cod:-2069114094,cantidad:86453687,descu:999999999
+cod:88888,cantidad:3,descu:10000
