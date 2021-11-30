@@ -10,10 +10,10 @@ una minimización de la penalización.
 En el repositorio se pueden encontrar una serie de carpetas, las cuales contienen el trabajo realizado durante el semestre, así como la investigación, código, instancias experimentales y más.
 
 * El directorio consta del archivo etpSolver.cpp el cual contiene el código para resolver el problema.
-* [paperIncial](./paperIncial): Carpeta que contiene el código latex y PDF generado, de la investigación inicial.
-* [paperFinal](./paperFinal): Carpeta que contiene el código latex y PDF generado, de la investigación final.
-* [Instancias](./Instancias): Carpeta que contiene las instancias de prueba para el ETP.
-* [Respuestas](./Respuestas): Carpeta que contiene los archivos generados al momento de probar una instancia, estos son los archivos de los timeslot totales, la penalización promedio, y en qué bloque quedaron asignados cada examen.
+* [paperIncial](https://github.com/CDonosoK/UTFSM/tree/master/Inteligencia%20Artificial%20-%20INF295/paperInicial): Carpeta que contiene el código latex y PDF generado, de la investigación inicial.
+* [paperFinal](https://github.com/CDonosoK/UTFSM/tree/master/Inteligencia%20Artificial%20-%20INF295/paperFinal): Carpeta que contiene el código latex y PDF generado, de la investigación final.
+* [Instancias](https://github.com/CDonosoK/UTFSM/tree/master/Inteligencia%20Artificial%20-%20INF295/Instancias): Carpeta que contiene las instancias de prueba para el ETP.
+* [Respuestas](https://github.com/CDonosoK/UTFSM/tree/master/Inteligencia%20Artificial%20-%20INF295/Respuestas): Carpeta que contiene los archivos generados al momento de probar una instancia, estos son los archivos de los timeslot totales, la penalización promedio, y en qué bloque quedaron asignados cada examen.
 
 
 ## Instrucciones la Ejecución del ETPSolver
